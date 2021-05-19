@@ -54,6 +54,8 @@ urlpatterns = [
     url(r'^favorite-list/(?P<pk>[0-9]+)$', views_serializers.FavoritesDetail.as_view(), name=views_serializers.FavoritesDetail.name),
     url(r'^user-list/$', views_serializers.UserAlemList.as_view(), name=views_serializers.UserAlemList.name),
     url(r'^user-list/(?P<pk>[0-9]+)$', views_serializers.UserAlemDetail.as_view(), name=views_serializers.UserAlemDetail.name),
+    url(r'^update-list/$', views_serializers.UpdateList.as_view(), name=views_serializers.UpdateList.name),
+    url(r'^update-list/(?P<pk>[0-9]+)$', views_serializers.UpdateDetail.as_view(), name=views_serializers.UpdateDetail.name),
 
     url(r'^$', views_serializers.ApiRoot.as_view(), name=views_serializers.ApiRoot.name)
 

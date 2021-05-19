@@ -135,7 +135,7 @@ class MessageAdmin(admin.ModelAdmin):
 admin.site.register(Messages, MessageAdmin)
 
 class FavoritesAdmin(admin.ModelAdmin):
-    list_display = ('name' ,
+    list_display = ('name' , 'photo'
                     #'color', 'size', 'category', 'subcategory', 'photo', 'photo1', 'photo2', 'photo3', 'photo4',
                     #'alem_id'
                     )

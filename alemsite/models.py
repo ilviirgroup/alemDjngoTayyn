@@ -75,7 +75,7 @@ class Orders(models.Model):
     #size = models.ForeignKey('Size', related_name='productss', on_delete=models.CASCADE)
     size = models.ManyToManyField('Size')
     inprocess = models.BooleanField(default=False)
-    photo = models.ImageField(upload_to='Category/%Y/%m/%d')
+    photo = models.ImageField(upload_to='Category/%Y/%m/%d', blank=True)
 
     def get_absolute_url(self):
         return reverse('orders', kwargs={"ai":self.ai, "name":self.name})
@@ -154,6 +154,8 @@ class Favorites(models.Model):
     subcategory = models.ForeignKey('Subcategory', related_name='favorites', on_delete=models.CASCADE)
     new = models.BooleanField(default=False)
     # new = models.ForeignKey('New', related_name='products', on_delete=models.CASCADE)
+    user_number=models.CharField(max_length=250, default='')
+    
 
     def get_absolute_url(self):
         return reverse('favorites', kwargs={"ai": self.ai, "name": self.name})
@@ -213,7 +215,8 @@ class UserAlem(AbstractUser):
     #def __str__(self):
        # return self.name
 
-
+class Update(models.Model):
+    update=models.BooleanField(default=False)
 
 
 

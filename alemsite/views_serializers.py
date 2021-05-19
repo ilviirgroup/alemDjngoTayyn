@@ -1,9 +1,9 @@
 from rest_framework import generics
 from .models import Brand, Products, Category, Color, Gender, Size, Status, Subcategory, New, Messages, Orders
-from .models import Favorites, UserAlem
+from .models import Favorites, UserAlem, Update
 from .serializers import BrandSerializer, ProductSerializer, CategorySerializer, ColorSerializer
 from .serializers import GenderSerializer, SizeSerializer, SubcategorySerializer, OrdersSerializer
-from .serializers import MessageSerializer, FavoritesSerializer, NewSerializer, UserAlemSerializer
+from .serializers import MessageSerializer, FavoritesSerializer, NewSerializer, UserAlemSerializer, UpdateSerializer
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
@@ -152,6 +152,18 @@ class UserAlemDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserAlemSerializer
     name = 'useralem-detail'
 
+
+class UpdateList(generics.ListCreateAPIView):
+    queryset= Update.objects.all()
+    serializer_class = UpdateSerializer
+    name = 'update-list'
+
+class UpdateDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Update.objects.all()
+    serializer_class = UpdateSerializer
+    name = 'update-detail'
+
+
 class ApiRoot(generics.GenericAPIView):
     name = 'alem'
 
@@ -169,7 +181,8 @@ class ApiRoot(generics.GenericAPIView):
             '10-message': reverse(MessageList.name, request=request),
             '11-order': reverse(OrdersList.name, request=request),
             '12-favorite': reverse(FavoritesList.name, request=request),
-            '13-user:': reverse(UserAlemList.name, request=request)
+            '13-user:': reverse(UserAlemList.name, request=request),
+            '14-update': reverse(UpdateList.name, request=request),
 
 
             })

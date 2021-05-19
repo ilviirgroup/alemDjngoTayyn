@@ -1,7 +1,7 @@
 from django.utils.safestring import mark_safe
 from rest_framework import serializers
 from .models import Brand, Products, Category, Color, Gender, Size, Subcategory, New, Messages, UserAlem
-from .models import Orders, Favorites
+from .models import Orders, Favorites, Update
 
 
 class BrandSerializer(serializers.HyperlinkedModelSerializer):
@@ -131,10 +131,13 @@ class OrdersSerializer(serializers.HyperlinkedModelSerializer):
     #               )
 
 class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
+    
     class Meta:
         model = Favorites
         fields = ('url','pk', 'ai','name', 'description', 'price',  'brand', 'category', 'color', 'gender', 'size', 'status',
-                  'subcategory', 'new', 'photo','photo1','photo2','photo3','photo4',)
+                  'subcategory', 'new', 'photo','photo1','photo2','photo3','photo4', 'user_number')
+    
+
     # user = serializers.SlugRelatedField(queryset=UserAlem.objects.all(), slug_field='username')
 
 
@@ -142,6 +145,13 @@ class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
     #     model = Favorites
     #     fields = ('name',  'date','url','pk', 'ai', 'brand', 'gender', 'status', 'color', 'size', 'category'
     #               , 'subcategory')
+
+class UpdateSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Update
+        fields = ('url','pk','update')
+
 
 
 class UserAlemSerializer(serializers.ModelSerializer):
