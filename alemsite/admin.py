@@ -128,7 +128,7 @@ admin.site.register(UserAlem, UserAdmin)
 
 class MessageAdmin(admin.ModelAdmin):
     form = messageForm
-    list_display = ( 'user','text', 'date')
+    list_display = ( 'userphone', 'user', 'text', 'date')
     ordering = ['date']
 
 

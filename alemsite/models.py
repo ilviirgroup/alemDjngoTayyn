@@ -49,6 +49,7 @@ class Messages(models.Model):
     text = models.TextField()
     answer = models.TextField(blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    userphone = models.CharField(max_length=150)
     user = models.ForeignKey('UserAlem', related_name='user', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -71,7 +72,7 @@ class Orders(models.Model):
     name = models.CharField(max_length=250)
     price = models.FloatField()
     # name = models.ForeignKey('Products', related_name='productss', on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField()    
     #size = models.ForeignKey('Size', related_name='productss', on_delete=models.CASCADE)
     size = models.ManyToManyField('Size')
     inprocess = models.BooleanField(default=False)

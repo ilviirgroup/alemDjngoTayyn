@@ -115,12 +115,12 @@ class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Messages
-        fields = ('url','pk', 'user', 'text', 'answer', 'date')
+        fields = ('url','pk', 'userphone', 'text', 'user', 'answer', 'date')
 
 class OrdersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Orders
-        fields = ('url','pk', 'ai','name', 'price', 'color', 'size', 'username', 
+        fields = ('url','pk', 'ai','name', 'price', 'color', 'size', 'quantity', 'date', 'username', 
         'userphone', 'useremail', 'completed', 'inprocess', 'photo',)
     # user = serializers.SlugRelatedField(queryset=UserAlem.objects.all(), slug_field='username')
 
