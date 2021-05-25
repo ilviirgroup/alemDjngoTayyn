@@ -23,6 +23,10 @@ class Category(models.Model):
     def get_sub(self):
          return Subcategory.objects.filter(category=self)
 
+    class Meta:
+        ordering = ('-pk',)
+
+
 
 class Color(models.Model):
     name = models.CharField(max_length=150)
@@ -76,7 +80,8 @@ class Orders(models.Model):
     #size = models.ForeignKey('Size', related_name='productss', on_delete=models.CASCADE)
     size = models.ManyToManyField('Size')
     inprocess = models.BooleanField(default=False)
-    photo = models.ImageField(upload_to='Category/%Y/%m/%d', blank=True)
+    photo = models.CharField(max_length=250)
+    # photo = models.ImageField(upload_to='Category/%Y/%m/%d', blank=True)
 
     def get_absolute_url(self):
         return reverse('orders', kwargs={"ai":self.ai, "name":self.name})
@@ -137,11 +142,17 @@ class Favorites(models.Model):
     ai = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     description = models.TextField(blank=True)
-    photo = models.ImageField(upload_to='Orders/%Y/%m/%d', blank=True)
-    photo1 = models.ImageField(upload_to='Photo1/%Y/%m/%d', blank=True)
-    photo2 = models.ImageField(upload_to='Photo2/%Y/%m/%d', blank=True)
-    photo3 = models.ImageField(upload_to='Photo3/%Y/%m/%d', blank=True)
-    photo4 = models.ImageField(upload_to='Photo4/%Y/%m/%d', blank=True)
+    photo = models.CharField(max_length=250)
+    photo1 = models.CharField(max_length=250)
+    photo2 = models.CharField(max_length=250)
+    photo3 = models.CharField(max_length=250)
+    photo4 = models.CharField(max_length=250)
+
+    # photo = models.ImageField(upload_to='Orders/%Y/%m/%d', blank=True)
+    # photo1 = models.ImageField(upload_to='Photo1/%Y/%m/%d', blank=True)
+    # photo2 = models.ImageField(upload_to='Photo2/%Y/%m/%d', blank=True)
+    # photo3 = models.ImageField(upload_to='Photo3/%Y/%m/%d', blank=True)
+    # photo4 = models.ImageField(upload_to='Photo4/%Y/%m/%d', blank=True)
     price = models.FloatField()
     brand = models.ForeignKey('Brand', related_name='favorites', on_delete=models.CASCADE )
     category = models.ForeignKey('Category', related_name='favorites', on_delete=models.CASCADE)
@@ -196,7 +207,8 @@ class Subcategory(models.Model):
     def __str__(self):
         return self.name
 
-
+    class Meta:
+        ordering = ('-pk',)
 
 
 # 13
