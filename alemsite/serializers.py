@@ -135,7 +135,7 @@ class FavoritesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Favorites
         fields = ('url','pk', 'ai','name', 'description', 'price',  'brand', 'category', 'color', 'gender', 'size', 'status',
-                  'subcategory', 'new', 'photo','photo1','photo2','photo3','photo4', 'user_number')
+                  'subcategory', 'new', 'photo','photo1','photo2','photo3','photo4', 'user_number', 'useremail')
     
 
     # user = serializers.SlugRelatedField(queryset=UserAlem.objects.all(), slug_field='username')
@@ -155,11 +155,11 @@ class UpdateSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserAlemSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+    # password = serializers.CharField(write_only=True)
     class Meta:
         model = UserAlem
         fields = ('url','pk', 'username', 'surname', 'phone', 'email','password')
-        write_only_fields = 'password'
+        # write_only_fields = 'password'
 
         def create(self, validated_data):
             user = UserAlem.objects.create(username=validated_data['username'],

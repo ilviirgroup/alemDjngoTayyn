@@ -142,11 +142,11 @@ class Favorites(models.Model):
     ai = models.CharField(max_length=250)
     name = models.CharField(max_length=250)
     description = models.TextField(blank=True)
-    photo = models.CharField(max_length=250)
-    photo1 = models.CharField(max_length=250)
-    photo2 = models.CharField(max_length=250)
-    photo3 = models.CharField(max_length=250)
-    photo4 = models.CharField(max_length=250)
+    photo = models.CharField(max_length=250, blank=True)
+    photo1 = models.CharField(max_length=250, blank=True)
+    photo2 = models.CharField(max_length=250, blank=True)
+    photo3 = models.CharField(max_length=250, blank=True)
+    photo4 = models.CharField(max_length=250, blank=True)
 
     # photo = models.ImageField(upload_to='Orders/%Y/%m/%d', blank=True)
     # photo1 = models.ImageField(upload_to='Photo1/%Y/%m/%d', blank=True)
@@ -167,6 +167,7 @@ class Favorites(models.Model):
     new = models.BooleanField(default=False)
     # new = models.ForeignKey('New', related_name='products', on_delete=models.CASCADE)
     user_number=models.CharField(max_length=250, default='')
+    useremail=models.CharField(max_length=250, default='')
     
 
     def get_absolute_url(self):
