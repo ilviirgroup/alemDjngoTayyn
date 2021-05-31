@@ -60,7 +60,7 @@ class Messages(models.Model):
     def __str__(self):
         return self.text
 
-    class Meta:
+    class Meta: 
         ordering = ('-pk',)
 
 class Orders(models.Model):
