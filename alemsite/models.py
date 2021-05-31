@@ -53,8 +53,8 @@ class Messages(models.Model):
     text = models.TextField()
     answer = models.TextField(blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    userphone = models.CharField(max_length=150)
-    useremail = models.CharField(max_length=150)
+    userphone = models.CharField(max_length=150, default='')
+    useremail = models.CharField(max_length=150, default='')
     # user = models.ForeignKey('UserAlem', related_name='user', on_delete=models.CASCADE)
 
     def __str__(self):
