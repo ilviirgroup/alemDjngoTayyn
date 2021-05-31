@@ -22,7 +22,7 @@ class messageForm(forms.ModelForm):
     class Meta:
         model = Messages
 
-        fields = ['text',]
+        fields = ['text', 'answer']
         widgets = {
             'text': forms.Textarea(attrs={'class': 'form-control'}),
         }

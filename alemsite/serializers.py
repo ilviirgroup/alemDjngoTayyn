@@ -75,15 +75,7 @@ class SizeSerializer(serializers.HyperlinkedModelSerializer):
         model = Size
         fields = ('url','pk', 'name', 'subcategory', )
 
-# class StatusSerializer(serializers.HyperlinkedModelSerializer):
-#     products = serializers.HyperlinkedRelatedField(
-#         many=True,
-#         read_only=True,
-#         view_name='products-detail')
 
-#     class Meta:
-#         model = Status
-#         fields = ('url','pk', 'name', 'products', )
 
 class SubcategorySerializer(serializers.HyperlinkedModelSerializer):
     products = serializers.HyperlinkedRelatedField(
@@ -106,16 +98,17 @@ class NewSerializer(serializers.HyperlinkedModelSerializer):
         model = New
         fields = ('url','pk','new', 'products')
 
-class MessageSerializer(serializers.ModelSerializer):
-    user = serializers.SlugRelatedField(queryset=UserAlem.objects.all(), slug_field='username')
+class MessageSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Messages
+        fields = ('url', 'pk', 'text','answer', 'date','userphone', 'useremail',)
+
+# class MessageSerializer(serializers.ModelSerializer):
+#     user = serializers.SlugRelatedField(queryset=UserAlem.objects.all(), slug_field='username')
     #user = serializers.HyperlinkedRelatedField(
         #many=True,
         #read_only=True,
         #view_name='messages-detail')
-
-    class Meta:
-        model = Messages
-        fields = ('url','pk', 'userphone', 'text', 'user', 'answer', 'date')
 
 class OrdersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
