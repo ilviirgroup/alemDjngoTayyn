@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'alem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'alemdb',
         'USER': 'postgres',
         'PASSWORD': 'nury3250',
         'HOST': '127.0.0.1',
